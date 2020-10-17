@@ -2,13 +2,12 @@
 
 using namespace eosio;
 
-class tictactoe : eosio::contract {
+class [[eosio::contract]] tictactoe : public contract {
   public:
 
     using contract::contract;
 
-    [[eosio::action]] void welcome() {
-
-        require_auth(user);
+    [[eosio::action]] void welcome( name host, name challenger ) {
+        require_auth( _self() );
     }
 };
