@@ -1,0 +1,19 @@
+gitpod /workspace/eosio-web-ide $ eosio-cpp -abigen contract/tictactoe/tictactoe.cpp -o contract/tictactoe/tictactoe.wasm
+Warning, empty ricardian clause file
+Warning, empty ricardian clause file
+Warning, action <welcome> does not have a ricardian contract
+
+gitpod /workspace/eosio-web-ide $ cleos set contract tictactoe123 contract/tictactoe/
+Reading WASM from /workspace/eosio-web-ide/contract/tictactoe/tictactoe.wasm...
+Skipping set abi because the new abi is the same as the existing abi
+Publishing contract...
+executed transaction: c56c6d2d546591a355dc89b513f9072c759e8b6f4cd790bd99a11d029c7ca78b  720 bytes  411 us
+#         eosio <= eosio::setcode               {"account":"tictactoe123","vmtype":0,"vmversion":0,"code":"0061736d0100000001370b6000017f60027f7f006...
+warning: transaction executed locally, but may not be confirmed by the network yet         ] 
+
+
+gitpod /workspace/eosio-web-ide $ cleos push action tictactoe123 welcome '['user1', 'user2']' -p tictactoe123@active
+executed transaction: 43bba796f8228c25ac5875c4c1686c6efa96689c08f3864dc7caec930e260d9c  112 bytes  206 us
+#  tictactoe123 <= tictactoe123::welcome        {"host":"user1","challenger":"user2"}
+>> Welcome, challengers user1 and user2 !
+warning: transaction executed locally, but may not be confirmed by the network yet         ] 
